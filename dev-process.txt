@@ -1,10 +1,10 @@
-# Make dynamic fields in Back-end UI
-# Create Table
+# Make dynamic fields in admin UI
   - year - String
   - make - String
   - model - String
   - product urls - Array of String
+# Create Table
 # Insert into table with ajax
-# Make form in Front-end UI
-# Get form data from table in Front-end UI
+# Make form in client UI
+# Get form data from table in client UI
 # Get search data from table

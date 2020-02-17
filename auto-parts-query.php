@@ -14,10 +14,16 @@
 **/
 
 define( "APQ_BASE_PATH", plugin_dir_path(__FILE__) );
+define( "APQ_BASE_URL", plugin_dir_url(__FILE__) );
 
 // include autoloader
 require_once APQ_BASE_PATH . "vendor/autoload.php";
 
 use APQ\UI\Backend\Option_Page;
+use APQ\Inc\Register_Scripts;
 
-$test = new Option_Page();
+function apq_initialization() {
+  new Option_Page();
+  new Register_Scripts();
+}
+add_action('init', 'apq_initialization');

@@ -3,22 +3,7 @@ namespace APQ\UI\Backend;
 
 if(!defined('ABSPATH')) die('Prevent direct access!');
 
-/**
- * class Option_Page
- * Make a page for admin options
- * @since 1.0.0
-*/
-
-
 class Option_Page {
-
-  /**
-   * @method __construct
-   * make navigation menu in sidebar
-   * @since 1.0.0
-   * @access public
-   * @return void
-  */
 
   public function __construct() {
     if(is_admin()) {
@@ -26,38 +11,89 @@ class Option_Page {
     }
   }
 
-  /**
-   * @method apq_option_menu
-   * add option menu
-   * @since 1.0.0
-   * @access public
-   * @return void
-  */
-
   public function apq_option_menu() {
   	add_menu_page( 'Auto Parts Query Options', 'Parts Query', 'manage_options', 'auto-parts-query-options', [$this, 'apq_display_options'], 'dashicons-search', 100);
   }
 
-  /*display options field*/
+  /*display options fields*/
   public function apq_display_options() {
-  ?>
-    <div class="wrap">
-        <h1>Custom theme options</h1>
+    ?>
+      <div class="apq__container">
+          <h1>Auto Parts Query Options</h1>
 
-        <form method="post" action="options.php">
+          <form method="post" action="">
 
-            <div class="fields_wrapper">
-                <h3>Header part</h3>
-
-                <div class="single_option">
-                    <h4>Header CTA button text</h4>
-                    <input type="text" name="new_option_name" value="" />
+              <!--
+                Single Fields Group
+                To add dinamically
+              -->
+              <div id="APQFieldsGroupBase" class="apq__row apq__fields_group" style="display: none;">
+                <div class="apq__col">
+                  <label>Year</label>
+                  <input type="text" name="year[]" value="" />
                 </div>
-            </div>
+                <div class="apq__col">
+                  <label>Make</label>
+                  <input type="text" name="make[]" value="" />
+                </div>
+                <div class="apq__col">
+                  <label>Model</label>
+                  <input type="text" name="model[]" value="" />
+                </div>
+                <div class="apq__col">
+                  <label>Product URL</label>
+                  <input type="text" name="product_url[]" value="" />
+                </div>
+                <div class="apq__col">
+                  <button type="button" class="apq__fields_group_remove_btn">Remove</button>
+                </div>
+              </div>
 
-        </form>
-    </div>
-  <?php
+              <!--Fields Group Container-->
+              <div id="APQFieldsGroupContainer">
+
+                <!--
+                  Single Fields Group
+                -->
+                <div class="apq__row apq__fields_group">
+                  <div class="apq__col">
+                    <label>Year</label>
+                    <input type="text" name="year[]" value="" />
+                  </div>
+                  <div class="apq__col">
+                    <label>Make</label>
+                    <input type="text" name="make[]" value="" />
+                  </div>
+                  <div class="apq__col">
+                    <label>Model</label>
+                    <input type="text" name="model[]" value="" />
+                  </div>
+                  <div class="apq__col">
+                    <label>Product URL</label>
+                    <input type="text" name="product_url[]" value="" />
+                  </div>
+                  <div class="apq__col">
+                    <button type="button" class="apq__fields_group_remove_btn">Remove</button>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="apq__row">
+                <div class="apq__col">
+                  <button type="button" id="APQAddFieldsGroupAddBtn">+ Add</button>
+                </div>
+              </div>
+
+              <div class="apq__row">
+                <div class="apq__col">
+                  <button>Save</button>
+                </div>
+              </div>
+
+          </form>
+      </div>
+    <?php
   }
 
 }
