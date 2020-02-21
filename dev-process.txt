@@ -1,9 +1,9 @@
-# Make dynamic fields in admin UI
+# Make dynamic fields in admin UI - done
   - year - String
   - make - String
   - model - String
-  - product urls - Array of String
-# Create Table
+  - product_url - Array of String
+# Create Table - done
 # Insert into table with ajax
 # Make form in client UI
 # Get form data from table in client UI

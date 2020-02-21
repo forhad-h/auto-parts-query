@@ -21,41 +21,12 @@ class Option_Page {
       <div class="apq__container">
           <h1>Auto Parts Query Options</h1>
 
-          <form method="post" action="">
-
               <!--
-                Single Fields Group
+                Single form
                 To add dinamically
               -->
               <div id="APQFieldsGroupBase" class="apq__row apq__fields_group" style="display: none;">
-                <div class="apq__col">
-                  <label>Year</label>
-                  <input type="text" name="year[]" value="" />
-                </div>
-                <div class="apq__col">
-                  <label>Make</label>
-                  <input type="text" name="make[]" value="" />
-                </div>
-                <div class="apq__col">
-                  <label>Model</label>
-                  <input type="text" name="model[]" value="" />
-                </div>
-                <div class="apq__col">
-                  <label>Product URL</label>
-                  <input type="text" name="product_url[]" value="" />
-                </div>
-                <div class="apq__col">
-                  <button type="button" class="apq__fields_group_remove_btn">Remove</button>
-                </div>
-              </div>
-
-              <!--Fields Group Container-->
-              <div id="APQFieldsGroupContainer">
-
-                <!--
-                  Single Fields Group
-                -->
-                <div class="apq__row apq__fields_group">
+                <form method="post" >
                   <div class="apq__col">
                     <label>Year</label>
                     <input type="text" name="year[]" value="" />
@@ -73,8 +44,44 @@ class Option_Page {
                     <input type="text" name="product_url[]" value="" />
                   </div>
                   <div class="apq__col">
-                    <button type="button" class="apq__fields_group_remove_btn">Remove</button>
+                    <button type="button" class="apq__fields_group_remove_btn"><span class="dashicons dashicons-trash"></span></button>
+                    <button type="button" class="apq__fields_group_save_btn"><span class="dashicons dashicons-yes"></span></button>
                   </div>
+                </form>
+              </div>
+
+              <!--Fields Group Container-->
+              <div id="APQFieldsGroupContainer">
+
+                <!--
+                  Single Fields Group
+                -->
+                <div class="apq__row apq__fields_group">
+                  <form method="post">
+                    <div class="apq__col">
+                      <label>Year</label>
+                      <input type="text" name="year[]" value="" />
+                    </div>
+                    <div class="apq__col">
+                      <label>Make</label>
+                      <input type="text" name="make[]" value="" />
+                    </div>
+                    <div class="apq__col">
+                      <label>Model</label>
+                      <input type="text" name="model[]" value="" />
+                    </div>
+                    <div class="apq__col">
+                      <label>Product URL</label>
+                      <input type="text" name="product_url[]" value="" />
+                    </div>
+                    <div class="apq__col">
+                      <button type="button" class="apq__fields_group_remove_btn">
+                        <span class="dashicons dashicons-trash"></span>
+                        <img src="<?= admin_url('images/loading.gif'); ?>" alt=""/>
+                      </button>
+                      <button type="button" class="apq__fields_group_save_btn"><span class="dashicons dashicons-yes"></span></button>
+                    </div>
+                  </form>
                 </div>
 
               </div>
@@ -85,13 +92,6 @@ class Option_Page {
                 </div>
               </div>
 
-              <div class="apq__row">
-                <div class="apq__col">
-                  <button>Save</button>
-                </div>
-              </div>
-
-          </form>
       </div>
     <?php
   }

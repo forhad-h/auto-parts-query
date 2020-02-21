@@ -16,12 +16,12 @@ class Register_Scripts {
 
   public function apq_admin_scripts() {
     wp_enqueue_style( 'apq_admin_css', APQ_BASE_URL.'assets/css/admin.css');
-    wp_enqueue_script( 'apq_admin_js', APQ_BASE_URL.'assets/js/admin.js', '', '', true );
+    wp_enqueue_script( ADMIN_JS_HANDLE, APQ_BASE_URL.'assets/js/admin.js', ['jquery'], '', true );
   }
 
   public function apq_client_scripts() {
-    wp_enqueue_style( 'apq_admin_css', APQ_BASE_URL.'assets/css/client.css');
-    wp_enqueue_script( 'apq_admin_js', APQ_BASE_URL.'assets/js/client.js', '', '', true );
+    wp_enqueue_style( 'apq_client_css', APQ_BASE_URL.'assets/css/client.css');
+    wp_enqueue_script( 'apq_client_js', APQ_BASE_URL.'assets/js/client.js', ['jquery'], '', true );
   }
 
 }
