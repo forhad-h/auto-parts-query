@@ -17,6 +17,9 @@ class Register_Scripts {
   public function apq_admin_scripts() {
     wp_enqueue_style( 'apq_admin_css', APQ_BASE_URL.'assets/css/admin.css');
     wp_enqueue_script( ADMIN_JS_HANDLE, APQ_BASE_URL.'assets/js/admin.js', ['jquery'], '', true );
+
+    wp_localize_script(ADMIN_JS_HANDLE, 'apqAjax', ['url' => admin_url('admin-ajax.php')] );
+
   }
 
   public function apq_client_scripts() {

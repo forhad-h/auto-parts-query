@@ -1,6 +1,0 @@
-<?php
-use APQ\Inc\DB\Table;
-
-class Save_Query_Info {
-
-}

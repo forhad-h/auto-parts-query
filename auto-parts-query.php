@@ -24,6 +24,7 @@ require_once APQ_BASE_PATH . 'vendor/autoload.php';
 use APQ\UI\Backend\Option_Page;
 use APQ\Inc\Register_Scripts;
 use APQ\Inc\DB\Table;
+use APQ\Inc\Ajax;
 
 function apq_initialization() {
 
@@ -38,5 +39,9 @@ function apq_initialization() {
   // Create table
   $apq_table = new Table();
   $apq_table->create_table();
+
+  // ajax
+  $ajax = new Ajax();
+
 }
 add_action('init', 'apq_initialization');
