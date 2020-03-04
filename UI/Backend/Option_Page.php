@@ -1,5 +1,6 @@
 <?php
 namespace APQ\UI\Backend;
+use APQ\Inc\DB\Table;
 
 if(!defined('ABSPATH')) die('Prevent direct access!');
 
@@ -26,7 +27,7 @@ class Option_Page {
                 To add dinamically
               -->
               <div id="APQFieldsGroupBase" class="apq__row apq__fields_group" style="display: none;">
-                <form method="post" >
+                <form method="post" data-rid="" >
                   <div class="apq__col">
                     <label>Year</label>
                     <input type="text" name="year" value="" />
@@ -44,8 +45,18 @@ class Option_Page {
                     <input type="text" name="product_url" value="" />
                   </div>
                   <div class="apq__col">
-                    <button type="button" class="apq__fields_group_remove_btn"><span class="dashicons dashicons-trash"></span></button>
-                    <button type="submit" class="apq__fields_group_save_btn"><span class="dashicons dashicons-yes"></span></button>
+                    <button type="button" class="apq__fields_group_btn apq__fields_group_remove_btn">
+                      <span class="dashicons dashicons-trash"></span>
+                      <span class="apq_loading">
+                        <img src="<?= admin_url('images/loading.gif'); ?>" alt=""/>
+                      </span>
+                    </button>
+                    <button type="submit" class="apq__fields_group_btn apq__fields_group_save_btn">
+                      <span class="dashicons dashicons-yes"></span>
+                      <span class="apq_loading">
+                        <img src="<?= admin_url('images/loading.gif'); ?>" alt=""/>
+                      </span>
+                    </button>
                   </div>
                 </form>
               </div>
@@ -53,36 +64,94 @@ class Option_Page {
               <!--Fields Group Container-->
               <div id="APQFieldsGroupContainer">
 
+                <?php
+                $apq_table = new Table();
+                $all_data = json_decode($apq_table->get_all_query_data());
+
+                if(!empty($all_data)) :
+                  foreach($all_data as $data) :
+                ?>
                 <!--
                   Single Fields Group
                 -->
                 <div class="apq__row apq__fields_group">
-                  <form method="post">
+                  <form method="post" data-rid="<?= $data->id; ?>">
                     <div class="apq__col">
                       <label>Year</label>
-                      <input type="text" name="year" value="" />
+                      <input type="text" name="year" value="<?= $data->year; ?>" />
                     </div>
                     <div class="apq__col">
                       <label>Make</label>
-                      <input type="text" name="make" value="" />
+                      <input type="text" name="make" value="<?= $data->make; ?>" />
                     </div>
                     <div class="apq__col">
                       <label>Model</label>
-                      <input type="text" name="model" value="" />
+                      <input type="text" name="model" value="<?= $data->model; ?>" />
                     </div>
                     <div class="apq__col">
                       <label>Product URL</label>
-                      <input type="text" name="product_url" value="" />
+                      <input type="text" name="product_url" value="<?= $data->product_url; ?>" />
                     </div>
                     <div class="apq__col">
-                      <button type="button" class="apq__fields_group_remove_btn">
+                      <button type="button" class="apq__fields_group_btn apq__fields_group_remove_btn">
                         <span class="dashicons dashicons-trash"></span>
-                        <img src="<?= admin_url('images/loading.gif'); ?>" alt=""/>
+                        <span class="apq_loading">
+                          <img src="<?= admin_url('images/loading.gif'); ?>" alt=""/>
+                        </span>
                       </button>
-                      <button type="submit" class="apq__fields_group_save_btn"><span class="dashicons dashicons-yes"></span></button>
+                      <button type="submit" class="apq__fields_group_btn apq__fields_group_save_btn">
+                        <span class="dashicons dashicons-yes"></span>
+                        <span class="apq_loading">
+                          <img src="<?= admin_url('images/loading.gif'); ?>" alt=""/>
+                        </span>
+                      </button>
                     </div>
                   </form>
                 </div>
+
+              <?php
+                  endforeach;
+                else:
+              ?>
+
+              <div class="apq__row apq__fields_group">
+                <form method="post" data-rid="">
+                  <div class="apq__col">
+                    <label>Year</label>
+                    <input type="text" name="year" value="" />
+                  </div>
+                  <div class="apq__col">
+                    <label>Make</label>
+                    <input type="text" name="make" value="" />
+                  </div>
+                  <div class="apq__col">
+                    <label>Model</label>
+                    <input type="text" name="model" value="" />
+                  </div>
+                  <div class="apq__col">
+                    <label>Product URL</label>
+                    <input type="text" name="product_url" value="" />
+                  </div>
+                  <div class="apq__col">
+                    <button type="button" class="apq__fields_group_btn apq__fields_group_remove_btn">
+                      <span class="dashicons dashicons-trash"></span>
+                      <span class="apq_loading">
+                        <img src="<?= admin_url('images/loading.gif'); ?>" alt=""/>
+                      </span>
+                    </button>
+                    <button type="submit" class="apq__fields_group_btn apq__fields_group_save_btn">
+                      <span class="dashicons dashicons-yes"></span>
+                      <span class="apq_loading">
+                        <img src="<?= admin_url('images/loading.gif'); ?>" alt=""/>
+                      </span>
+                    </button>
+                  </div>
+                </form>
+              </div>
+
+              <?php
+                endif;
+              ?>
 
               </div>
 

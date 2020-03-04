@@ -31,3 +31,18 @@
 .apq__col input {
   margin: 0;
 }
+
+.apq__fields_group_btn {
+  position: relative;
+}
+
+.apq__fields_group_btn .apq_loading {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  padding: 2px;
+  background: #eee;
+  display: none;
+}

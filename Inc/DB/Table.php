@@ -7,13 +7,13 @@ class Table {
   private $table_name;
   private $charset_collate;
 
-  function __construct() {
+  public function __construct() {
     $this->db = APQ_WPDB::getWPDB();
     $this->table_name = $this->db->prefix . 'apq_data';
     $this->charset_collate = $this->db->get_charset_collate();
   }
 
-  function create_table() {
+  public function create_table() {
 
     $query = <<<QUERY
           CREATE TABLE IF NOT EXISTS {$this->table_name} (
@@ -34,7 +34,7 @@ QUERY;
 
   }
 
-  function insert_query_data($year, $make, $model, $product_url) {
+  public function insert_query_data($year, $make, $model, $product_url) {
 
     $this->db->insert($this->table_name, [
       'year' => $year,
@@ -45,8 +45,40 @@ QUERY;
 
     $query = "SELECT * FROM {$this->table_name} where id={$this->db->insert_id}";
 
-    return json_encode($this->db->get_results($query));
+    return json_encode( $this->db->get_results($query) );
 
+  }
+
+  public function update_query_data($id, $year, $make, $model, $product_url) {
+
+    $this->db->update(
+        $this->table_name,
+        [
+          'year' => $year,
+          'make' => $make,
+          'model' => $model,
+          'product_url' => $product_url
+        ],
+        [
+          'id' => $id
+        ]
+    );
+
+    $query = "SELECT * FROM {$this->table_name} where id={$id}";
+
+    return json_encode( $this->db->get_results($query) );
+
+  }
+
+  public function delete_query_data($id) {
+    if(
+      $this->db->delete($this->table_name, [ 'id' => $id])
+    ) return 'Deleted!';
+  }
+
+  public function get_all_query_data() {
+    $query = "SELECT * FROM {$this->table_name}";
+    return json_encode($this->db->get_results($query));
   }
 
 }
