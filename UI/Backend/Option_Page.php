@@ -13,14 +13,14 @@ class Option_Page {
   }
 
   public function apq_option_menu() {
-  	add_menu_page( 'Auto Parts Query Options', 'Parts Query', 'manage_options', 'auto-parts-query-options', [$this, 'apq_display_options'], 'dashicons-search', 100);
+  	add_menu_page( 'Auto Parts Query Data', 'Parts Query', 'manage_options', 'auto-parts-query-options', [$this, 'apq_display_options'], 'dashicons-search', 100);
   }
 
   /*display options fields*/
   public function apq_display_options() {
     ?>
       <div class="apq__container">
-          <h1>Auto Parts Query Options</h1>
+          <h1>Auto Parts Query Data</h1>
 
               <!--
                 Single form

@@ -1,10 +1,10 @@
+* {
+  box-sizing: border-box;
+}
+
 .apq__container {
   padding-left: 10px;
   padding-right: 10px;
-}
-
-* {
-  box-sizing: border-box;
 }
 
 .apq__row {

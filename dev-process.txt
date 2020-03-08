@@ -4,7 +4,8 @@
   - model - String
   - product_url - Array of String
 # Create Table - done
-# Insert into table with ajax
+# Insert into table with ajax - done
+
 # Make form in client UI
 # Get form data from table in client UI
 # Get search data from table
