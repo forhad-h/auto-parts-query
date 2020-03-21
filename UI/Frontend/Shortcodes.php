@@ -9,11 +9,19 @@ class Shortcodes {
     public function __construct() {
       $this->apq_table = new Table();
       add_shortcode('query_form', [$this, 'query_form']);
+      add_shortcode('result_page', [$this, 'result_page']);
     }
 
-    function query_form($atts) {
+    public function query_form($atts) {
       ob_start();
       include_once APQ_BASE_PATH.'UI/Frontend/Markup/query-form.php';
       return ob_get_clean();
     }
+
+    public function result_page() {
+      ob_start();
+      include_once APQ_BASE_PATH.'UI/Frontend/Markup/result-page.php';
+      return ob_get_clean();
+    }
+
 }

@@ -43,7 +43,7 @@ QUERY;
       'product_url' => $product_url,
     ]);
 
-    $query = "SELECT * FROM {$this->table_name} where id={$this->db->insert_id}";
+    $query = "SELECT * FROM {$this->table_name} WHERE id={$this->db->insert_id}";
 
     return json_encode( $this->db->get_results($query) );
 
@@ -64,7 +64,7 @@ QUERY;
         ]
     );
 
-    $query = "SELECT * FROM {$this->table_name} where id={$id}";
+    $query = "SELECT * FROM {$this->table_name} WHERE id='{$id}'";
 
     return json_encode( $this->db->get_results($query) );
 
@@ -78,6 +78,12 @@ QUERY;
 
   public function get_all_query_data() {
     $query = "SELECT * FROM {$this->table_name}";
+    return json_encode($this->db->get_results($query));
+  }
+
+  public function get_query_result($year, $make, $model) {
+    $query = "SELECT * FROM {$this->table_name} WHERE year='{$year}' AND make='{$make}' AND model='{$model}'";
+
     return json_encode($this->db->get_results($query));
   }
 

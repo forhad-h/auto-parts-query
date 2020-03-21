@@ -36,7 +36,7 @@ function apq_plugin_activation() {
 
     global $wpdb;
 
-    if(null === $wpdb->get_row( "SELECT post_name FROM {$wpdb->prefix}posts WHERE post_name='query-result-page'", 'ARRAY_A' )) {
+    if(null === $wpdb->get_row( "SELECT post_name FROM {$wpdb->prefix}posts WHERE post_name='query-results-page'", 'ARRAY_A' )) {
       $current_user = wp_get_current_user();
 
       // create post object
@@ -45,12 +45,11 @@ function apq_plugin_activation() {
         'post_status' => 'publish',
         'post_author' => $current_user->ID,
         'post_type' => 'page',
-        'post_content' => 'Works in the content',
+        'post_content' => '[result_page]',
       ];
 
       wp_insert_post($page);
     }
-
 }
 
 function apq_initialization() {

@@ -4,7 +4,7 @@
     <?php
         $all_data = json_decode($this->apq_table->get_all_query_data());
     ?>
-    <form method="get">
+    <form method="get" action="<?= get_site_url().'/query-results-page'; ?>">
 
       <div class="apq__col">
         <label>Year</label>
