@@ -21,8 +21,8 @@
     var year = $(this).find('input[name=year]')
     var make = $(this).find('input[name=make]')
     var model = $(this).find('input[name=model]')
+    var product_image_url = $(this).find('input[name=product_image_url]')
     var product_url = $(this).find('input[name=product_url]')
-
 
     $.ajax({
       method: 'POST',
@@ -32,6 +32,7 @@
         year: year.val(),
         make: make.val(),
         model: model.val(),
+        product_image_url: product_image_url.val(),
         product_url: product_url.val()
       },
       success: function(data) {

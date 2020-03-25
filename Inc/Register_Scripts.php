@@ -24,6 +24,7 @@ class Register_Scripts {
 
   public function apq_client_scripts() {
     wp_enqueue_style( 'apq_client_css', APQ_BASE_URL.'assets/css/client.css');
+    wp_enqueue_style( 'apq_bootstrap_css', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css');
     wp_enqueue_script( 'apq_client_js', APQ_BASE_URL.'assets/js/client.js', ['jquery'], '', true );
   }
 

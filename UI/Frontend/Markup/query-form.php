@@ -4,11 +4,11 @@
     <?php
         $all_data = json_decode($this->apq_table->get_all_query_data());
     ?>
-    <form method="get" action="<?= get_site_url().'/query-results-page'; ?>">
+    <form method="get" target="_blank" action="<?= get_site_url().'/query-results-page'; ?>">
 
       <div class="apq__col">
         <label>Year</label>
-        <select name="year">
+        <select name="apq_year">
           <option value="">Select Year</option>
           <?php
             if(!empty($all_data)) :
@@ -24,7 +24,7 @@
 
       <div class="apq__col">
         <label>Make</label>
-        <select name="make">
+        <select name="apq_make">
           <option value="">Select Make</option>
           <?php
             if(!empty($all_data)) :
@@ -40,7 +40,7 @@
 
       <div class="apq__col">
         <label>Model</label>
-        <select name="model">
+        <select name="apq_model">
           <option value="">Select Model</option>
           <?php
             if(!empty($all_data)) :

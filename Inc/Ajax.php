@@ -16,12 +16,13 @@ class Ajax {
     $year = !empty($_POST['year']) ? $_POST['year'] : '';
     $make = !empty($_POST['make']) ? $_POST['make'] : '';
     $model = !empty($_POST['model']) ? $_POST['model'] : '';
+    $product_image_url = !empty($_POST['product_image_url']) ? $_POST['product_image_url'] : '';
     $product_url = !empty($_POST['product_url']) ? $_POST['product_url'] : '';
 
     if(!empty($row_id)) {
-      echo $this->apq_table->update_query_data($row_id, $year, $make, $model, $product_url);
+      echo $this->apq_table->update_query_data($row_id, $year, $make, $model, $product_image_url, $product_url);
     }else {
-      echo $this->apq_table->insert_query_data($year, $make, $model, $product_url);
+      echo $this->apq_table->insert_query_data($year, $make, $model, $product_image_url, $product_url);
     }
 
     wp_die();
@@ -33,7 +34,7 @@ class Ajax {
     if(!empty($row_id)) {
       echo $this->apq_table->delete_query_data($row_id);
     }
-    
+
   }
 
 }

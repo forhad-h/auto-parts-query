@@ -41,6 +41,10 @@ class Option_Page {
                     <input type="text" name="model" value="" />
                   </div>
                   <div class="apq__col">
+                    <label>Product Image URL</label>
+                    <input type="text" name="product_image_url" value="" />
+                  </div>
+                  <div class="apq__col">
                     <label>Product URL</label>
                     <input type="text" name="product_url" value="" />
                   </div>
@@ -89,6 +93,10 @@ class Option_Page {
                       <input type="text" name="model" value="<?= $data->model; ?>" />
                     </div>
                     <div class="apq__col">
+                      <label>Product Image URL</label>
+                      <input type="text" name="product_image_url" value="<?= $data->product_image_url; ?>" />
+                    </div>
+                    <div class="apq__col">
                       <label>Product URL</label>
                       <input type="text" name="product_url" value="<?= $data->product_url; ?>" />
                     </div>
@@ -127,6 +135,10 @@ class Option_Page {
                   <div class="apq__col">
                     <label>Model</label>
                     <input type="text" name="model" value="" />
+                  </div>
+                  <div class="apq__col">
+                    <label>Product Image URL</label>
+                    <input type="text" name="product_image_url" value="" />
                   </div>
                   <div class="apq__col">
                     <label>Product URL</label>
