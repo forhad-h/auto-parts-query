@@ -36,12 +36,16 @@ function apq_plugin_activation() {
 
     global $wpdb;
 
-    if(null === $wpdb->get_row( "SELECT post_name FROM {$wpdb->prefix}posts WHERE post_name='query-results-page'", 'ARRAY_A' )) {
+    if(null === $wpdb->get_row( "SELECT post_name FROM {$wpdb->prefix}posts WHERE post_name='apq-query-result'", 'ARRAY_A' )) {
       $current_user = wp_get_current_user();
+
+      // Create table
+      $apq_table = new Table();
+      $apq_table->create_table();
 
       // create post object
       $page = [
-        'post_title' => __('Query Results Page', 'auto-parts-query'),
+        'post_title' => __('APQ Query Result', 'auto-parts-query'),
         'post_status' => 'publish',
         'post_author' => $current_user->ID,
         'post_type' => 'page',
@@ -55,16 +59,20 @@ function apq_plugin_activation() {
 add_filter('display_post_states', 'apq_display_page_states', 10, 2);
 
 function apq_display_page_states( $post_states, $post ) {
-
-    if($post->post_name === 'query-results-page') {
-      $post_states['apq_page_for_result'] = __('Query Result Page', 'auto-parts-query');
+    if($post->post_name === 'apq-query-result') {
+      $post_states['apq_page_for_result'] = __('Parts Query Result Page', 'auto-parts-query');
     }
+
 		return $post_states;
 }
 
-function apq_initialization() {
 
-  //TODO: need to instantiate objects in appropriate place
+// shortcodes
+$shortcodes = new Shortcodes();
+
+add_action('init', 'apq_initialization');
+
+function apq_initialization() {
 
   // Render option page in admin panel
   new Option_Page();
@@ -72,15 +80,8 @@ function apq_initialization() {
   // Register scripts and styles
   new Register_Scripts();
 
-  // Create table
-  $apq_table = new Table();
-  $apq_table->create_table();
-
   // ajax
   $ajax = new Ajax();
 
-  // shortcodes
-  $shortcodes = new Shortcodes();
 
 }
-add_action('init', 'apq_initialization');
