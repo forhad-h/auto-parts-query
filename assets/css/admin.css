@@ -2,6 +2,18 @@
   box-sizing: border-box;
 }
 
+.apq__import_area {
+  display: inline-block;
+  padding: 20px;
+  background-color: #fcc9c5;
+  margin-bottom: 25px;
+}
+
+.apq__import_area h4 {
+  color: #ed4d40;
+  margin-top: 0;
+}
+
 .apq__container {
   padding-left: 10px;
   padding-right: 10px;
@@ -16,6 +28,8 @@
 
 .apq__row>form {
   display: flex;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .apq__col {

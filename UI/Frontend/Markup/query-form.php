@@ -1,4 +1,7 @@
 <div class="apq__query_form_wrapper">
+    <div class="apq_logo">
+        <img src="<?= APQ_BASE_URL."assets/img/Vogtland-logo.png"; ?>" />
+    </div>
     <h1>MY VEHICLE</h1>
     <h3>Select your vehicle year, make and model to view Vogtland products that fit your vehicle</h3>
 
