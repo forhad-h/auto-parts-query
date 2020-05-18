@@ -9,36 +9,38 @@
         $all_data = json_decode($this->apq_table->get_all_query_data());
         $year = [];
         $make = [];
+        $model = [];
 
         // sanitize make
         foreach($all_data as $data) {
           array_push($year, $data->year);
           array_push($make, $data->make);
+          array_push($model, $data->model);
         }
 
         $year = array_unique($year);
         $make = array_unique($make);
+        $model = array_unique($model);
 
     ?>
     <form method="get" target="_blank" class="apq__query_form" action="<?= get_site_url().'/apq-query-result'; ?>">
 
       <div class="apq_single_field">
-        <select name="apq_year">
+        <select name="apq_year" class="apq_select2">
           <option value="">Year</option>
           <?php
-            if(!empty($year)) :
-              foreach($year as $each_year) :
+
+            for($i = 2020; $i >= 1900; $i--) :
           ?>
-              <option value="<?= $each_year; ?>"><?= $each_year; ?></option>
+              <option value="<?= $i; ?>"><?= $i; ?></option>
           <?php
-              endforeach;
-            endif;
+            endfor;
           ?>
         </select>
       </div>
 
       <div class="apq_single_field">
-        <select name="apq_make">
+        <select name="apq_make" class="apq_select2">
           <option value="">Make</option>
           <?php
             if(!empty($make)) :
@@ -53,13 +55,13 @@
       </div>
 
       <div class="apq_single_field">
-        <select name="apq_model">
+        <select name="apq_model" class="apq_select2">
           <option value="">Model</option>
           <?php
-            if(!empty($all_data)) :
-              foreach($all_data as $data) :
+            if(!empty($model)) :
+              foreach($model as $each_model) :
           ?>
-              <option value="<?= $data->model; ?>"><?= $data->model; ?></option>
+              <option value="<?= $each_model; ?>"><?= $each_model; ?></option>
           <?php
               endforeach;
             endif;

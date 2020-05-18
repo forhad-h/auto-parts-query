@@ -17,7 +17,6 @@ define( 'APQ_BASE_PATH', plugin_dir_path(__FILE__) );
 define( 'APQ_PLUGIN_FILE', __FILE__  );
 define( 'APQ_BASE_URL', plugin_dir_url(__FILE__) );
 define( 'APQ_PLUGIN', [ 'name' => 'auto_parts_query', 'version' => '1.0.0' ] );
-define( 'ADMIN_JS_HANDLE', 'apq_admin_js');
 
 
 // include autoloader

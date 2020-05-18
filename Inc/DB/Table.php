@@ -85,9 +85,32 @@ QUERY;
   }
 
   public function get_query_result($year, $make, $model) {
-    $query = "SELECT * FROM {$this->table_name} WHERE year='{$year}' AND make='{$make}' AND model='{$model}'";
+    $in_year = (int) substr($year, -2);
 
-    return json_encode($this->db->get_results($query));
+    $query = "SELECT * FROM {$this->table_name} WHERE make='{$make}' AND model='{$model}'";
+    $rows = $this->db->get_results($query);
+    $results = [];
+
+    foreach($rows as $row) {
+        $out_year = explode('-', $row->year);
+        $start_year = trim($out_year[0]);
+        $end_year = trim($out_year[1]);
+
+        for($i = (int) $start_year; $i != $end_year + 1; $i++) {
+
+
+          if($i == 100) {
+            $i = 1;
+          }
+
+
+          if($i == $in_year) {
+            array_push($results, $row);
+          }
+        }
+    }
+
+    return json_encode($results);
   }
 
 }
